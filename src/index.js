@@ -1,11 +1,6 @@
-import Lunchmenu from './assets/sodexo-menu.json';
+import SodexoData from './modules/sodexo-data';
 
-console.log('lunch menu json', Lunchmenu);
-
-let coursesEn = [];
-let coursesFi = [];
 let languageSetting = 'fi';
-
 
 /**
  * Displays lunch menu items as html list
@@ -22,17 +17,16 @@ const renderMenu = (menu) => {
   }
 };
 
-
 /**
  * Switch app lang en/fi
  */
 const switchLanguage = () => {
   if (languageSetting === 'fi') {
     languageSetting = 'en';
-    renderMenu(coursesEn);
+    renderMenu(SodexoData.coursesEn);
   } else {
     languageSetting = 'fi';
-    renderMenu(coursesFi);
+    renderMenu(SodexoData.coursesFi);
   }
   console.log('change language to: ', languageSetting);
 };
@@ -57,9 +51,9 @@ const sortMenu = (menu, order) => {
  */
 const renderSortedMenu = () => {
   if (languageSetting === 'en') {
-    renderMenu(sortMenu(coursesEn, 'asc'));
+    renderMenu(sortMenu(SodexoData.coursesEn, 'asc'));
   } else {
-    renderMenu(sortMenu(coursesFi, 'desc'));
+    renderMenu(sortMenu(SodexoData.coursesFi, 'desc'));
   }
 };
 
@@ -75,29 +69,15 @@ const pickRandomDish = (menu) => {
 };
 
 const displayRandomDish = () => {
-  alert(pickRandomDish(coursesFi));
-};
-
-
-/**
- * Parses couse arrays from Sodexo json file
- *
- * @param {Object} sodexoDailyMenu
- */
-const parseSodexoMenu = (sodexoDailyMenu) => {
-  const courses = Object.values(sodexoDailyMenu);
-  for (const course of courses) {
-    coursesEn.push(course.title_en);
-    coursesFi.push(course.title_fi);
-  }
+  alert(pickRandomDish(SodexoData.coursesFi));
 };
 
 
 const init = () => {
-  parseSodexoMenu(Lunchmenu.courses);
   document.querySelector('#switch-lang').addEventListener('click', switchLanguage);
   document.querySelector('#sort-menu').addEventListener('click', renderSortedMenu);
   document.querySelector('#pick-dish').addEventListener('click', displayRandomDish);
-  renderMenu(coursesFi);
+  renderMenu(SodexoData.coursesFi);
+  // TODO: render fazer data on page (use fazer-data.js module)
 };
 init();
