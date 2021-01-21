@@ -1,31 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8"/>
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <link rel="stylesheet" href="assets/styles.css">
-  </head>
-  <body>
-    <h1>Lunch menu</h1>
-
-    <div class="container-box">
-      <div class="restaurant-box">
-        <h2>Sodexo</h2>
-          <ul id="sodexo"></ul>
+<head>
+  <meta charset="utf-8" />
+  <title>Lounari | Etsi lähimmät ruokalistat</title>
+  <script src="https://kit.fontawesome.com/1ff2ea641a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" media="screen and (max-width: 768px)" href="assets/css/mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 1100px)" href="assets/css/widescreen.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- navbar & flex container -->
+  <nav>
+    <ul>
+      <li><a href="#">Etusivu</a></li>
+      <li><a href="#">Ruokalistat</a></li>
+      <li><a href="#">Ravintolat</a></li>
+      <li><a href="#">Yhteystiedot</a></li>
+    </ul>
+    <span>
+      <input type="text" name="search" id="search" placeholder="Hae ravintolan nimellä..">
+    </span>
+  </nav>
+  <!-- Headerlogo -->
+  <header id="showcase">
+    <div id="showcase-logoarea">
+      <div id="logo-text">Lounari.</div>
+      <div id="slogan">Missä tänään syötäisiin.</div>
+    </div>
+    <div id="showcase-imgarea">
+      <div id="triangle"></div>
+    </div>
+  </header>
+  <!-- Main area with infotext and menus -->
+  <main>
+    <div class="info-area">
+      <div id="info-text">
+        Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä.<br>
+        Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen lounaslistan.
+        Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla
+        ravintolan logoa.
       </div>
-      <div class="restaurant-box">
-        <h2>Fazer</h2>
-          <ul id="fazer">
-            <li>placeholder</li>
-            <li>placeholder</li>
-            <li>placeholder</li>
-          </ul>
+    </div>
+    <div class="restaurant-area">
+      <div id="sodexo" class="restaurant">
+        Ravintola 1
+      </div>
+      <div class="restaurant">
+        Ravintola 2
+      </div>
+      <div class="tool-buttons">
+        <button id="switch-lang">Switch language</button>
+        <button id="sort-menu">Sort menu</button>
+        <button id="pick-dish">Pick random dish</button>
       </div>
     </div>
 
-    <button id="switch-lang">Switch language</button>
-    <button id="sort-menu">Sort menu</button>
-    <button id="pick-dish">Pick random dish</button>
+  </main>
 
-  </body>
+
+</body>
 </html>

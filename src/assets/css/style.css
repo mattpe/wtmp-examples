@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --main-bg-color:  rgb(172, 101, 101);
+  }
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0.75rem 0;
+}
+
+/* utility & main classes */
+/* here some css variables */
+
+nav {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    padding: 0.5rem 1rem;
+    /* border: 1px solid #000; */
+}
+nav ul {
+    display: flex;
+    align-content: center;
+    list-style-type: none;
+}
+
+nav ul a {
+    color: var(--main-bg-color);
+    padding: 0.6rem;
+    margin: 0 0.25em;
+}
+
+nav ul li a:hover {
+    background-color: lightcoral;
+    border-radius: 5px;
+    color: #fff;
+}
+
+nav span {
+    width: 20vw;
+}
+
+#search {
+    width: 100%;
+    min-width: 50px;
+    box-sizing: border-box;
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem 0;
+    display: inline-block;
+    border: 1px solid var(--main-bg-color);
+    border-radius: 4px;
+    outline: none;
+}
+
+#showcase {
+    display: flex;
+    height: 30vh;
+}
+
+#showcase-logoarea {
+    flex: 4;
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #logo-text {}
+
+#slogan {} */
+
+#showcase-imgarea {
+    flex: 6;
+    background: lightpink url(../img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg)
+    no-repeat center center/cover;
+
+}
+
+#triangle {
+    width: 0;
+	height: 0;
+	border-bottom: 30vh solid lightgreen;
+	border-right: 10vw solid transparent;
+}
+
+.info-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: lightpink; */
+}
+
+#info-text {
+    width: 80vw;
+    padding: 2em 0;
+    text-align: center;
+    /* This way the text wont wrap */
+    font-size: 1.8vw;
+}
+
+.restaurant-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.restaurant {
+    /* height: 20vh; */
+    width: 40vw;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.057);
+    margin: 1em 0;
+    border: 1px dashed var(--main-bg-color);
+    border-radius: 10px;
+}
