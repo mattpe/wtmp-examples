@@ -1,4 +1,8 @@
-# WTMP Starter
+# WTMP Examples P3/2021
+
+Some examples/task solutions for WTMP course in different branches.
+
+## Based on WTMP Starter
 
 Simple boilerplate for [Webpack](https://webpack.js.org/guides/getting-started) powered web development exercises.
 
