@@ -9,6 +9,7 @@ let languageSetting = 'fi';
  * Displays lunch menu items as html list
  *
  * @param {Array} menuData - Lunch menu array
+ * @param {string} restaurant - element target id
  */
 const renderMenu = (menuData, restaurant) => {
   const list = document.querySelector('#' + restaurant);
