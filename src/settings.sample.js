@@ -1,5 +1,8 @@
 /**
- * Global app settings
+ * Global app settings TEMPLATE
+ *
+ * USAGE: Add your setting values & rename to settings.js
+ *
  */
 
 // Generic proxy server only for random testing
@@ -7,6 +10,6 @@
 const networkProxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
 // Url for proxy-server/fazer.php (use your own)
-const fazerProxyUrl = 'https://users.metropolia.fi/~<MYUSERNAME>/fazer.php';
+const fazerProxyUrl = 'https://users.metropolia.fi/~<USERNAME>/<YOUR_PATH>/fazer.php';
 
 export {networkProxyUrl, fazerProxyUrl};

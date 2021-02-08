@@ -1,10 +1,16 @@
+/**
+ * Network functions
+ * @module modules/network
+ * @author mattpe <mattpe@metropolia.fi>
+ *
+ */
 import {networkProxyUrl} from "../settings";
 
 /**
  * Creates HTTP Get request
  *
- * @param {String} url API endpoint
- * @param {Boolean} useProxy wheter to use the proxy server
+ * @param {string} url API endpoint
+ * @param {boolean} useProxy wheter to use the proxy server
  * @returns {Object} json data
  */
 const fetchGetJson = async (url, useProxy = false) => {

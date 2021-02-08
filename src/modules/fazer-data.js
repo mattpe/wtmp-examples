@@ -1,12 +1,15 @@
 /**
  * Functions for managing Fazer menu data
+ * @module modules/fazer-data
+ * @author mattpe <mattpe@metropolia.fi>
  *
  */
 import {fazerProxyUrl} from "../settings";
+import {fetchGetJson} from "./network";
 
  // TODO: Fix hard coded date, note that Karaportti is closed for now
-const weeklyUrlEn = `${fazerProxyUrl}/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=2020-01-14`;
-const weeklyUrlFi = `${fazerProxyUrl}/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=2020-01-14`;
+const weeklyUrlEn = `${fazerProxyUrl}/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=`;
+const weeklyUrlFi = `${fazerProxyUrl}/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=`;
 
 /**
  * Returns a daily menu array from Fazer weekly json data
@@ -28,23 +31,29 @@ const parseDailyMenu = (menuData, dayOfWeek) => {
 };
 
 /**
- * TODO: design & implent multilang support (and update this comment)
- * @param {*} menuData
- * @param {*} lang
- * @param {*} dayOfWeek
+ * Get daily menu from Fazer API
+ *
+ * @async
+ * @param {string} lang
+ * @param {string} date in ISO format (YYYY-MM-DD)
+ * @return {Promise<string>} Daily menu data
  */
-const getDailyMenu = (menuData, lang, dayOfWeek = 1) => {
+const getDailyMenu = async (lang, date) => {
+  // Get number of the weekday (0: Sun, 1: Mon, etc.)
+  let dayOfWeek = new Date().getDay();
   // Fazer's index for Monday is 0, in JS it is 1
   dayOfWeek -= 1;
   if (dayOfWeek === -1) {
     dayOfWeek = 0;
   }
-  console.log('parsing weekday #', dayOfWeek);
+  let menuData;
+  try {
+    menuData = await fetchGetJson(`${lang == 'fi' ? weeklyUrlFi:weeklyUrlEn}${date}`);
+  } catch (error) {
+    throw new Error(error.message);
+  }
   return parseDailyMenu(menuData, dayOfWeek);
 };
 
-// console.log('debug fasu', getDailyMenu('fi'));
-
-const FazerData = {getDailyMenu, weeklyUrlFi, weeklyUrlEn};
-
+const FazerData = {getDailyMenu};
 export default FazerData;

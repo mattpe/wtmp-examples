@@ -1,5 +1,12 @@
-const today = new Date().toISOString().split('T')[0];
-const dailyUrl = `https://www.sodexo.fi/ruokalistat/output/daily_json/152/${today}`;
+/**
+ * Functions for managing Sodexo menu data
+ * @module modules/sodexo-data
+ * @author mattpe <mattpe@metropolia.fi>
+ *
+ */
+import {fetchGetJson} from "./network";
+
+const dailyUrl = `https://www.sodexo.fi/ruokalistat/output/daily_json/152/`;
 
 /**
  * Parses couse arrays from Sodexo json file
@@ -19,11 +26,24 @@ const parseSodexoMenu = (sodexoDailyMenu) => {
   return {fi: coursesFi, en: coursesEn};
 };
 
-const getDailyMenu = (menuData, lang, dayOfWeek = 0) => {
+/**
+ * Get daily menu from Sodexo API
+ *
+ * @async
+ * @param {string} lang
+ * @param {string} date in ISO format (YYYY-MM-DD)
+ * @return {Promise<string>} Daily menu data
+ */
+const getDailyMenu = async (lang, date) => {
+  let menuData;
+  try {
+    menuData = await fetchGetJson(`${dailyUrl}${date}`);
+  } catch (error) {
+    throw new Error(error.message);
+  }
   const parsedMenu = parseSodexoMenu(menuData.courses);
   return (lang === 'fi') ? parsedMenu.fi : parsedMenu.en;
 };
 
-const SodexoData = {getDailyMenu, dailyUrl};
-
+const SodexoData = {getDailyMenu};
 export default SodexoData;
