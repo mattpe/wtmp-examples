@@ -93,7 +93,7 @@ const init = async () => {
 
   try {
     // TODO: add multilang support
-    const weeklyMenuJson = await fetchGetJson(FazerData.weeklyUrlFi, true);
+    const weeklyMenuJson = await fetchGetJson(FazerData.weeklyUrlFi);
     // Get number of the weekday (0: Sun, 1: Mon, etc.)
     const weekDay = new Date().getDay();
     const parsedMenu = FazerData.getDailyMenu(weeklyMenuJson, languageSetting, weekDay);

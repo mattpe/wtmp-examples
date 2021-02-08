@@ -2,10 +2,11 @@
  * Functions for managing Fazer menu data
  *
  */
+import {fazerProxyUrl} from "../settings";
 
  // TODO: Fix hard coded date, note that Karaportti is closed for now
-const weeklyUrlFi = 'https://www.fazerfoodco.fi/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=2020-01-14';
-const weeklyUrlEn = 'https://www.fazerfoodco.fi/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=2020-01-14';
+const weeklyUrlEn = `${fazerProxyUrl}/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=2020-01-14`;
+const weeklyUrlFi = `${fazerProxyUrl}/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=2020-01-14`;
 
 /**
  * Returns a daily menu array from Fazer weekly json data
