@@ -1,5 +1,6 @@
 import SodexoData from './modules/sodexo-data';
 import FazerData from './modules/fazer-data';
+import {setModalControls} from './modules/modal';
 
 const today = new Date().toISOString().split('T')[0];
 let languageSetting = 'fi';
@@ -94,6 +95,7 @@ const registerServiceWorkers = () => {
 const init = () => {
   document.querySelector('#switch-lang').addEventListener('click', switchLanguage);
   loadAllMenuData();
+  setModalControls();
   // Service workers registeration below disabled temporarily for easier local development
   // must be uncommented from init() before building for "production"
   //registerServiceWorkers();
