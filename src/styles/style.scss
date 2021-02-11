@@ -143,9 +143,9 @@ nav span {
 
 #showcase-imgarea {
     flex: 6;
-    background: white url(../img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg) 
+    background: white url(../assets/img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg)
     no-repeat center center/cover;
-    
+
 }
 
 #triangle {
@@ -244,7 +244,7 @@ nav span {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
@@ -253,7 +253,7 @@ nav span {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
   }
-  
+
   /* The Close Button */
   .close {
     color: #aaa;
@@ -261,7 +261,7 @@ nav span {
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: black;

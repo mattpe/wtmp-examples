@@ -38,13 +38,14 @@ const parseDailyMenu = (menuData, dayOfWeek) => {
  * @param {string} date in ISO format (YYYY-MM-DD)
  * @return {Promise<string>} Daily menu data
  */
-const getDailyMenu = async (lang, date) => {
+const getDailyMenu = async (restaurantId, lang, date) => {
+  // TODO: use restaurantId to build correct URL
   // Get number of the weekday (0: Sun, 1: Mon, etc.)
   let dayOfWeek = new Date().getDay();
   // Fazer's index for Monday is 0, in JS it is 1
   dayOfWeek -= 1;
   if (dayOfWeek === -1) {
-    dayOfWeek = 0;
+    dayOfWeek = 6;
   }
   let menuData;
   try {

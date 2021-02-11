@@ -6,7 +6,7 @@
  */
 import {fetchGetJson} from "./network";
 
-const dailyUrl = `https://www.sodexo.fi/ruokalistat/output/daily_json/152/`;
+const dailyUrl = `https://www.sodexo.fi/ruokalistat/output/daily_json`;
 
 /**
  * Parses couse arrays from Sodexo json file
@@ -30,14 +30,15 @@ const parseSodexoMenu = (sodexoDailyMenu) => {
  * Get daily menu from Sodexo API
  *
  * @async
+ * @param {number} restaurantId
  * @param {string} lang
  * @param {string} date in ISO format (YYYY-MM-DD)
  * @return {Promise<string>} Daily menu data
  */
-const getDailyMenu = async (lang, date) => {
+const getDailyMenu = async (restaurantId, lang, date) => {
   let menuData;
   try {
-    menuData = await fetchGetJson(`${dailyUrl}${date}`);
+    menuData = await fetchGetJson(`${dailyUrl}/${restaurantId}/${date}`);
   } catch (error) {
     throw new Error(error.message);
   }

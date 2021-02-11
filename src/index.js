@@ -1,9 +1,44 @@
 import SodexoData from './modules/sodexo-data';
 import FazerData from './modules/fazer-data';
 import {setModalControls} from './modules/modal';
+import './styles/style.scss';
+import './styles/mobile.scss';
+import './styles/widescreen.scss';
 
 const today = new Date().toISOString().split('T')[0];
 let languageSetting = 'fi';
+
+// TODO: Load from local storage if exists or use default:
+const userSettings = {
+  colorTheme: 'dark',
+  //move lang setting here
+};
+
+// TODO: updateUserSettings function
+// - refresh page (e.g. use DOM manipulation to change class names)
+// - save settings object to local storage
+
+const restaurants = [{
+  displayName: 'Myyrmäen Sodexo',
+  name: 'sodexo-myyrmaki',
+  id: 152,
+  type: SodexoData
+}, {
+  displayName: 'Karaportin Fasu',
+  name: 'fazer-kp',
+  id: 270540,
+  type: FazerData
+}];
+
+// adding a restaurant
+// restaurants.push(
+//   {
+//     displayName: 'Arabian Sodexo',
+//     name: 'sodexo-arabia',
+//     id: 999,
+//     type: SodexoData
+//   }
+// );
 
 /**
  * Displays lunch menu items as html list
@@ -54,23 +89,15 @@ const switchLanguage = () => {
  * @async
  */
 const loadAllMenuData = async () => {
-  // Load Sodexo menu
-  try {
-    const parsedMenu = await SodexoData.getDailyMenu(languageSetting, today);
-    renderMenu(parsedMenu, 'sodexo');
-  } catch (error) {
-    console.error(error);
-    // notify user if errors with data
-    renderNoDataNotification('No data available..', 'sodexo');
-  }
-  // Load Fazer menu (date hardcoded for testing with existing data)
-  try {
-    const parsedMenu = await FazerData.getDailyMenu(languageSetting, '2020-09-01');
-    renderMenu(parsedMenu, 'fazer');
-  } catch (error) {
-    console.error(error);
-    // notify user if errors with data
-    renderNoDataNotification('No data available..', 'fazer');
+  for (const restaurant of restaurants) {
+    try {
+      const parsedMenu = await restaurant.type.getDailyMenu(restaurant.id, languageSetting, today);
+      renderMenu(parsedMenu, restaurant.name);
+    } catch (error) {
+      console.error(error);
+      // notify user if errors with data
+      renderNoDataNotification('No data available..', restaurant.name);
+    }
   }
 };
 
