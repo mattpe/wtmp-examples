@@ -1,4 +1,10 @@
-# WTMP Starter
+# Lounari appi
+
+Displays menus and transportation info.
+
+---
+
+Based on WTMP Starter:
 
 Simple boilerplate for [Webpack](https://webpack.js.org/guides/getting-started) powered web development exercises.
 

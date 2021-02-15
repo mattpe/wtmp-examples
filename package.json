@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --config webpack.dev.js",
+    "docs": "jsdoc -R readme.md -d docs -r src/",
     "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "eslint-loader": "^4.0.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.1",
+    "jsdoc": "^3.6.6",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",

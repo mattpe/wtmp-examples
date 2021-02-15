@@ -10,3 +10,4 @@ node_modules/
 dist/
 # implementation secific settings
 src/settings.js
+docs/
